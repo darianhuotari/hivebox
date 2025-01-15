@@ -111,7 +111,7 @@ async def test_avg_temperature(
     mock_get_sense_box_temp,
     mock_get_all_sense_box_temps,
 ):
-    """Test that we can get an average temperature by calling the main temperature function.
+    """ Test that we can get an average temperature by calling the main temperature function.
     All return values are mocked for now, though this may change.
     """
     results = await temperature.avg_temperature()
