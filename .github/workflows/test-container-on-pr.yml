@@ -22,13 +22,7 @@ jobs:
       - name: Make shell scripts executable
         run: chmod +x ${PWD}/scripts/build_test_image.sh && chmod +x ${PWD}/scripts/check_version_was_changed.sh
 
-      - name: pwd
-        run: pwd
-
-      - name: ls
-        run: ls
-
-      - name: git
+      - name: git fetch
         run: git fetch origin
 
       - name: Check that version was changed
