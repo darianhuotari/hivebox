@@ -28,8 +28,8 @@ jobs:
       - name: ls
         run: ls
 
-      - name: cd scripts
-        run: cd scripts/
+      - name: git
+        run: git fetch origin
 
       - name: Check that version was changed
         run: ${PWD}/scripts/check_version_was_changed.sh
