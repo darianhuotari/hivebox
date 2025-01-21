@@ -17,7 +17,7 @@ if test "$src_dir_ver" != "$root_ver"; then
 fi
 
 # Check if the root version file has been updated
-if [ -z "$(git diff main -- VERSION)" ]; then
+if [ -z "$(git diff origin/main -- VERSION)" ]; then
   echo "Version was not updated; please bump the version number. Exiting...";
   exit 1;
 fi
