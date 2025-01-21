@@ -1,15 +1,13 @@
 #!/bin/bash
+# Please run this script from the root directory and not this scripts directory, or path resolution will fail.
 
 APP_DIRECTORY=src
-SCRIPT_DIR=$(pwd)
 
 # Get version from src dir
-cd ../$APP_DIRECTORY || exit
+cd $APP_DIRECTORY/ || exit
 src_dir_ver=$(cat VERSION)
 
-cd $SCRIPT_DIR
 # Get version from root dir
-cd .. || exit
 root_ver=$(cat VERSION)
 
 # Verify the versions match
