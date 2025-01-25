@@ -1,12 +1,5 @@
 name: 'Test container on PR'
-on:
-    pull_request:
-      paths:
-        - src/*
-        - tests/*
-        - .Dockerfile
-        - __init__.py
-  
+on: [pull_request]
 
 permissions:
   contents: read
