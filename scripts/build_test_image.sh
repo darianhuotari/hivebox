@@ -35,4 +35,6 @@ STATUSCODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:8000/versio
 if test "$STATUSCODE" -ne 200; then
     echo "/version endpoint call failed; exiting...";
     exit 1;
+else
+    echo "/version endpoint successfully responded with HTTP 200."
 fi
