@@ -7,6 +7,7 @@ SCRIPT_DIRECTORY=scripts
 DOCKERFILE=.Dockerfile
 
 # Get diff against main for applicable directories and files, and store in variables
+# We may remove the script dir check if it causes issues later
 CHANGES_APP_DIR=$(git diff origin/main -- "$APP_DIRECTORY")
 CHANGES_TEST_DIR=$(git diff origin/main -- "$TEST_DIRECTORY")
 CHANGES_DOCKERFILE=$(git diff origin/main -- "$DOCKERFILE")
