@@ -19,11 +19,14 @@ jobs:
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@3b139cfc5fae8b618d3eae3675e383bb1769c019 # v4.5.0
 
+      - name: git ignore executable bit
+        run: git config core.filemode false
+
       - name: Make shell scripts executable
         run: chmod +x ${PWD}/scripts/build_test_image.sh && chmod +x ${PWD}/scripts/check_version_was_changed.sh
 
       - name: git fetch
-        run: git fetch origin
+        run: git fetch origin %% git config core.filemode false
 
       - name: Check that version was changed
         run: ${PWD}/scripts/check_version_was_changed.sh
