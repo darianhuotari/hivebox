@@ -14,6 +14,14 @@ CHANGES_INIT=$(git diff origin/main -- "__init__.py")
 CHANGES_SCRIPT_DIR=$(git diff origin/main -- "$SCRIPT_DIRECTORY")
 CHANGES_REQUIREMENTS=$(git diff origin/main -- requirements.txt)
 
+# Temporary testing statements:
+echo "$CHANGES_APP_DIR"
+echo "$CHANGES_TEST_DIR"
+echo "$CHANGES_DOCKERFILE"
+echo "$CHANGES_INIT"
+echo "$CHANGES_SCRIPT_DIR"
+echo "$CHANGES_REQUIREMENTS"
+
 # If all variables are empty, no changes were detected, so we skip running the tests. We exit 0 so the test passes, since it's required to pass before merging to main
 if [ -z "${CHANGES_APP_DIR}" ] && [ -z "${CHANGES_TEST_DIR}" ] && [ -z "${CHANGES_DOCKERFILE}" ] && [ -z "${CHANGES_INIT}" ] && [ -z "${CHANGES_SCRIPT_DIR}" ] && [ -z "${CHANGES_REQUIREMENTS}" ]; then
   echo "No changes requiring build and smoke tests were detected; exiting...";
