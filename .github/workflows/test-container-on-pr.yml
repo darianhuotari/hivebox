@@ -26,7 +26,7 @@ jobs:
         run: chmod +x ${PWD}/scripts/build_test_image.sh && chmod +x ${PWD}/scripts/check_version_was_changed.sh
 
       - name: git fetch
-        run: git fetch origin %% git config core.filemode false
+        run: git fetch origin
 
       - name: Check that version was changed
         run: ${PWD}/scripts/check_version_was_changed.sh
