@@ -1,6 +1,33 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
-  ]
+    "config:recommended",
+    "group:allNonMajor"
+  ],
+  "addLabels": [
+    "renovatebot"
+  ],
+  "packageRules": [
+    {
+      "matchLanguages": [
+        "python"
+      ],
+      "addLabels": [
+        "python-dependencies"
+      ]
+    },
+    {
+      "datasources": [
+        "docker"
+      ],
+      "addaddLabels": [
+        "docker-dependency"
+      ]
+    }
+  ],
+  "timezone": "America/Chicago",
+  "schedule": [
+    "* * * * *"
+  ],
+  "prHourlyLimit": 10
 }
