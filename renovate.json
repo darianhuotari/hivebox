@@ -20,7 +20,7 @@
       "datasources": [
         "docker"
       ],
-      "addaddLabels": [
+      "addLabels": [
         "docker-dependency"
       ]
     }
