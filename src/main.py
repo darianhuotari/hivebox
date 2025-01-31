@@ -23,5 +23,5 @@ async def get_version():
 @app.get("/temperature")
 async def get_temperature():
     """Get the current average temperature"""
-    avg = await temperature.avg_temperature()
-    return {f"Average temperature (°C): {avg}"}
+    avg, status = await temperature.avg_temperature()
+    return {f"Average temperature (°C): {avg}", f"Status: {status}"}

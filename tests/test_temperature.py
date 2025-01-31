@@ -105,7 +105,67 @@ async def test_get_all_sense_box_temps(mock_get_sense_box_temp):  # pylint: disa
     side_effect=["box1", "box2", "box3"],
 )
 # pylint: disable=unused-argument
-async def test_avg_temperature(
+async def test_avg_temperature_good(
+    mock_get_open_sense_boxes,
+    mock_recent_sense_boxes,
+    mock_get_sense_box_temp,
+    mock_get_all_sense_box_temps,
+):
+    """ Test that we can get an average "Good" temperature by calling the main temperature function.
+    All return values are mocked for now, though this may change.
+    """
+    results, status = await temperature.avg_temperature()
+    assert isinstance(results, float)
+    assert results == 12.5
+    assert isinstance(status, str)
+    assert status == "Good"
+
+
+@pytest.mark.asyncio
+@patch(
+    "hivebox.src.endpoints.temperature.get_all_sense_box_temps", return_value=[5, 10]
+)
+@patch("hivebox.src.endpoints.temperature.get_sense_box_temp", side_effect=[5, 10])
+@patch(
+    "hivebox.src.endpoints.temperature.recent_sense_boxes",
+    side_effect=[["5ad4cf6d223bd8001939172d", "5ad4cfdc223bd80019392774"]],
+)
+@patch(
+    "hivebox.src.endpoints.temperature.get_open_sense_boxes",
+    side_effect=["box1", "box2", "box3"],
+)
+# pylint: disable=unused-argument
+async def test_avg_temperature_cold(
+    mock_get_open_sense_boxes,
+    mock_recent_sense_boxes,
+    mock_get_sense_box_temp,
+    mock_get_all_sense_box_temps,
+):
+    """ Test that we can get an average "Cold" temperature by calling the main temperature function.
+    All return values are mocked for now, though this may change.
+    """
+    results, status = await temperature.avg_temperature()
+    assert isinstance(results, float)
+    assert results == 7.5
+    assert isinstance(status, str)
+    assert status == "Too Cold"
+
+
+@pytest.mark.asyncio
+@patch(
+    "hivebox.src.endpoints.temperature.get_all_sense_box_temps", return_value=[35, 40]
+)
+@patch("hivebox.src.endpoints.temperature.get_sense_box_temp", side_effect=[35, 40])
+@patch(
+    "hivebox.src.endpoints.temperature.recent_sense_boxes",
+    side_effect=[["5ad4cf6d223bd8001939172d", "5ad4cfdc223bd80019392774"]],
+)
+@patch(
+    "hivebox.src.endpoints.temperature.get_open_sense_boxes",
+    side_effect=["box1", "box2", "box3"],
+)
+# pylint: disable=unused-argument
+async def test_avg_temperature_hot(
     mock_get_open_sense_boxes,
     mock_recent_sense_boxes,
     mock_get_sense_box_temp,
@@ -114,5 +174,8 @@ async def test_avg_temperature(
     """ Test that we can get an average temperature by calling the main temperature function.
     All return values are mocked for now, though this may change.
     """
-    results = await temperature.avg_temperature()
-    assert results == 12.5
+    results, status = await temperature.avg_temperature()
+    assert isinstance(results, float)
+    assert results == 37.5
+    assert isinstance(status, str)
+    assert status == "Too Hot"

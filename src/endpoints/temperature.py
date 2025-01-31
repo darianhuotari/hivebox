@@ -17,7 +17,7 @@ async def avg_temperature():
         None
 
     Returns:
-        Average temparature (°C) over the last hour
+        Average temparature (°C) over the last hour, and a status of that temperature
 
     """
     start = perf_counter()
@@ -29,7 +29,12 @@ async def avg_temperature():
         stop = perf_counter()
         print(f"total time taken {stop - start} seconds")
         avg = sum(results) / len(results)
-        return round(avg, 3)
+        status = "Good"
+        if avg < 10:
+            status = "Too Cold"
+        elif avg > 36:
+            status = "Too Hot"
+        return round(avg, 3), status
 
 
 async def get_all_sense_box_temps(sb_ids: list, session):
