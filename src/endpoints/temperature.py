@@ -26,14 +26,14 @@ async def avg_temperature():
         sb_ids = recent_sense_boxes(sb_ids)
 
         results = await get_all_sense_box_temps(sb_ids, session)
-        stop = perf_counter()
-        print(f"total time taken {stop - start} seconds")
         avg = sum(results) / len(results)
         status = "Good"
         if avg < 10:
             status = "Too Cold"
         elif avg > 36:
             status = "Too Hot"
+        stop = perf_counter()
+        print(f"total time taken is {stop - start} seconds")
         return round(avg, 3), status
 
 
@@ -115,7 +115,7 @@ def recent_sense_boxes(sense_boxes: list):
                 recent_boxes.append(sense_box["_id"])
                 
     stop = perf_counter()
-    print(f"filtering results took {stop - start} seconds")
+    print(f"filtering outated results took {stop - start} seconds")
     return recent_boxes
 
 
@@ -138,6 +138,6 @@ def get_open_sense_boxes(session):
     response = session.get(url, params=args)
     response = response.json()
     stop = perf_counter()
-    print(f"Intial API call took {stop - start} seconds")
+    print(f"Intial API call for boxes in the bounding box took {stop - start} seconds")
 
     return response
