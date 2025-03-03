@@ -2,7 +2,7 @@ asyncio==3.4.3
 coverage==7.6.12
 fastapi==0.115.11
 fastapi-cli==0.0.7
-mock==5.1.0
+mock==5.2.0
 prometheus_client==0.21.1
 psutil==7.0.0
 pytest==8.3.5
