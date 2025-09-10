@@ -1,12 +1,12 @@
 asyncio==3.4.3
-coverage==7.9.1
-fastapi==0.115.13
-fastapi-cli==0.0.7
+coverage==7.10.6
+fastapi==0.116.1
+fastapi-cli==0.0.11
 mock==5.2.0
 prometheus_client==0.22.1
 psutil==7.0.0
-pytest==8.4.0
+pytest==8.4.2
 pytest-asyncio==0.26.0
 pytest-cov==6.2.1
-requests==2.32.4
+requests==2.32.5
 requests-mock==1.12.1
