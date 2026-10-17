@@ -23,7 +23,7 @@ jobs:
 
       - uses: actions/checkout@85e6279cec87321a52edac9c87bce653a07cf6c2 # main
       - name: Setup Python
-        uses: actions/setup-python@8d9ed9ac5c53483de85588cdf95a591a75ab9f55 # main
+        uses: actions/setup-python@ec52d0af729a7c50ced4261d17a07916f43f5b8e # main
         with:
           python-version: 3.12
       - name: Generate coverage report
